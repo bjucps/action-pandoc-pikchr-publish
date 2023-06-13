@@ -1,0 +1,27 @@
+name: 'Pandoc+Pikchr'
+description: 'Auto-publish a target Pandoc Markdown file that may contain embedded pikchr figures'
+inputs:
+  src-file:
+    description: 'Pandoc Markdown file to publish'
+    required: true
+  dst-format:
+    description: 'Output format'
+    required: true
+    default: 'html'
+  dst-file:
+    description: 'Destination filename'
+    required: true
+    default: 'output.html'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - '--self-contained'
+    - '-f'
+    - 'markdown'
+    - '-t'
+    - ${{ inputs.dst-format }}
+    - ${{ inputs.src-file }}
+    - '-o'
+    - ${{ inputs.dst-file }}
+
