@@ -16,7 +16,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - '--self-contained'
+    - '--standalone'
     - '-f'
     - 'markdown'
     - '-t'
